@@ -1,0 +1,60 @@
+@import url('https://npmcdn.com/basscss@8.0.2/css/basscss.min.css');
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+.container {
+	max-width: 90%;
+	margin: 0 auto;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+html, body {
+	height: 100%;
+	min-height: 100%;
+	margin: 0;
+	color: #666;
+}
+
+body {
+	font-size: 1.25rem;
+	font-weight: 300;
+	line-height: 2;
+}
+
+a {
+	color: #666;
+}
+
+li {
+	display: inline-block;
+	margin-right: 1rem;
+}
+
+.sk-rotating-plane {
+	width: 40px;
+	height: 40px;
+	background-color: #333;
+	margin: 40px auto;
+
+	animation: sk-rotatePlane 1.2s infinite ease-in-out; }
+
+	@keyframes sk-rotatePlane {
+		0% {
+			transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+		}
+		50% {
+			transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+		}
+		100% {
+			transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+		}
+	}
