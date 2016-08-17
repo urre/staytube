@@ -6,7 +6,6 @@ const autoprefixer = require('autoprefixer');
 
 const common = {
   entry: [
-    './node_modules/basscss/css/basscss.css',
     './src/css/main.css',
     './src/css/type.css',
     './src/css/media.css',

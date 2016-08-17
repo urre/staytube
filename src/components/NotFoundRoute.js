@@ -7,8 +7,8 @@ class NotFoundRoute extends React.Component {
 		return (<div className="sm-flex flex-wrap mxn2">
 			<div className="sm-col-12 p2 center">
 							<Helmet
-			  title="404 | Staytube"
-			  meta={[{ property: 'og:title', content: 'Hi friend. This link does not exist.' }]}
+  title="404 | Staytube"
+  meta={[{ property: 'og:title', content: 'Hi friend. This link does not exist.' }]}
 							/>
 				<p>Hi friend. This link does not exist.</p>
 			</div>
