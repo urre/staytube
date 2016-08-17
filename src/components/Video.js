@@ -35,7 +35,7 @@ class Video extends React.Component {
 	}
 
 	formatViews(amount) {
-		return `${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} + ' views`;
+		return `${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}`;
 	}
 
 	formatDefiniion(kind) {
@@ -46,7 +46,7 @@ class Video extends React.Component {
 		return (<div>
 			<h1>{this.state.title}</h1>
 			<ul className="list-reset">
-				<li>{this.formatViews(`${this.state.stats}`)}</li>
+				<li>{this.formatViews(`${this.state.stats}`)} views</li>
 				<li>{this.formatDefiniion(`${this.state.definition}`)}</li>
 			</ul>
 			<div className="video">
