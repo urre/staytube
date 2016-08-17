@@ -7,6 +7,7 @@ Dedicated to great full length 🎥 🎹 🎷📼 concerts on YouTube.
 * React (hot reload)
 * Webpack
 * Babel (stage-0)
+* Basscss
 * PostCSS
 * ESLint (airbnb)
 * pre-commit hooks
