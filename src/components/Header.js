@@ -7,8 +7,8 @@ class Header extends React.Component {
 		return (<div className="sm-flex flex-wrap mxn2">
 			<div className="sm-col-12 p2 center">
 				<Helmet
-				title="Staytube | Great full length concert from YouTube"
-				meta={[{ property: 'og:title', content: 'Great full length concert from YouTube' }]}
+  title="Staytube | Great full length concert from YouTube"
+  meta={[{ property: 'og:title', content: 'Great full length concert from YouTube' }]}
 				/>
 				<h1>Staytu.be</h1>
 				<ul className="list-reset">

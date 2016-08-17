@@ -33,6 +33,7 @@ class LatestVideos extends Component {
 		return this.state.videos.map((video, index) => {
 			const videoClip = video.snippet.resourceId.videoId;
 			let image = 'http://placehold.it/350x150';
+			const alt = video.snippet.title;
 
 			if (video.snippet.hasOwnProperty('thumbnails')) {
 				image = video.snippet.thumbnails.high.url;
@@ -41,7 +42,7 @@ class LatestVideos extends Component {
 			if (video.snippet.title !== 'Deleted video') {
 				return (<div key={index} className="sm-col-6 lg-col-4 p2">
 					<Link to={`/videos/${videoClip}`} >
-						<img src={image} alt={this.video.snippet.title} role="presentation"/>
+						<img src={image} alt={alt} role="presentation" />
 					</Link>
 				</div>);
 			}
@@ -52,8 +53,8 @@ class LatestVideos extends Component {
 		return (
 			<div className="sm-flex flex-wrap">
 				<Helmet
-				title="Latest Videos | Staytube"
-				meta={[{ property: 'og:title', content: 'Home' }]}
+  title="Latest Videos | Staytube"
+  meta={[{ property: 'og:title', content: 'Home' }]}
 				/>
 				{this.state.loading ? <div className="sk-rotating-plane"></div> : this.renderVideo()}
 				{this.props.children}
