@@ -11,10 +11,10 @@ html {
 }
 
 .container {
-	max-width: 90%;
+	max-width: 95%;
 	margin: 0 auto;
-	padding-left: 1rem;
-	padding-right: 1rem;
+	padding-left: .5rem;
+	padding-right: .5rem;
 }
 
 html, body {
@@ -30,8 +30,16 @@ body {
 	line-height: 2;
 }
 
+.header a {
+	text-decoration: none;
+}
+
 a {
 	color: #666;
+}
+
+a:hover {
+	color: #5BC392;
 }
 
 li {
