@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 class NotFoundRoute extends React.Component {
 	render() {
-		return (<div className="sm-flex flex-wrap mxn2">
+		return (<div className="sm-flex flex-wrap">
 			<div className="sm-col-12 p2 center">
 							<Helmet
   title="404 | Staytube"

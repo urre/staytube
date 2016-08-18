@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 
 class About extends React.Component {
 	render() {
-		return (<div className="sm-flex flex-wrap mxn2">
+		return (<div className="sm-flex flex-wrap">
 			<div className="sm-col-12 p2">
 				<Helmet
   title="About | Staytube"

@@ -51,7 +51,7 @@ class LatestVideos extends Component {
 
 	render() {
 		return (
-			<div className="sm-flex flex-wrap">
+			<div className="sm-flex flex-wrap mxn2">
 				<Helmet
   title="Latest Videos | Staytube"
   meta={[{ property: 'og:title', content: 'Home' }]}
