@@ -43,6 +43,7 @@ class LatestVideos extends Component {
 				return (<div key={index} className="sm-col-6 lg-col-4 p2">
 					<Link to={`/videos/${videoClip}`} >
 						<img src={image} alt={alt} role="presentation" />
+						<p>{alt}</p>
 					</Link>
 				</div>);
 			}
