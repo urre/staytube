@@ -28,17 +28,17 @@ body {
 	font-size: 1.25rem;
 	font-weight: 300;
 	line-height: 2;
+	background-color: #1A1A1A;
 }
 
-.header a {
-	text-decoration: none;
-}
 
 a {
-	color: #666;
+	text-decoration: none;
+	color: #FFB3B3;
 }
 
-a:hover {
+a:hover,
+a:hover p {
 	color: #5BC392;
 }
 
@@ -47,10 +47,11 @@ li {
 	margin-right: 1rem;
 }
 
+/* Loader */
 .sk-rotating-plane {
 	width: 40px;
 	height: 40px;
-	background-color: #333;
+	background-color: #B8E5D0;
 	margin: 40px auto;
 
 	animation: sk-rotatePlane 1.2s infinite ease-in-out; }
@@ -66,3 +67,12 @@ li {
 			transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
 		}
 	}
+
+/* Header */
+.header {
+	/*border-bottom: 2px solid #6474AD;*/
+}
+
+.header h1 a {
+	color: #B8E5D0;
+}
