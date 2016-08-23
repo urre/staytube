@@ -8,8 +8,8 @@ class App extends React.Component {
 		return (
 			<div>
 				<Helmet
-			  title="Staytube | Great full length concert from YouTube"
-			  meta={[{ property: 'og:title', content: 'Great full length concert from YouTube' }]}
+  title="Staytube | Great full length concert from YouTube"
+  meta={[{ property: 'og:title', content: 'Great full length concert from YouTube' }]}
 				/>
 				<Header />
 				{this.props.children}

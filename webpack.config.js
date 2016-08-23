@@ -63,7 +63,9 @@ if (process.env.NODE_ENV === 'production') {
     debug: true,
     devServer: {
       contentBase: './src',
-      stats: 'errors-only',
+      stats: {
+      	colors: true
+      },
       inline: true,
       progress: true,
       proxy: {
