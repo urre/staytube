@@ -60,8 +60,8 @@ class Video extends React.Component {
 		return (<div className="sm-flex flex-wrap">
 			<div className="sm-col-12 p2">
 				<Helmet
-  title={`${this.state.title}`}
-  meta={[{ property: 'og:title', content: `${this.state.title}` }]}
+  			title={`${this.state.title}`}
+  			meta={[{ property: 'og:title', content: `${this.state.title}` }]}
 				/>
 				{this.state.loading ? <div className="sk-rotating-plane"></div> : this.renderVideo()}
 				{this.props.children}
