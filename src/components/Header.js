@@ -9,7 +9,7 @@ const Header = () => {
 				<Link to="/">Staytu.be</Link>
 			</h1>
 			<ul className="list-reset">
-				<li><Link to="/">Home</Link></li>
+				<li><Link to="/">Concerts</Link></li>
 				<li><Link to="/about">About</Link></li>
 			</ul>
 		</div>

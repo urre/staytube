@@ -34,7 +34,9 @@ body {
 
 a {
 	text-decoration: none;
-	color: #FFB3B3;
+	/*color: #FFB3B3;*/
+	color: #FA4A5A;
+	transition: color 300ms ease-in-out;
 }
 
 a:hover,
@@ -45,6 +47,10 @@ a:hover p {
 li {
 	display: inline-block;
 	margin-right: 1rem;
+}
+
+.tools li {
+	display: block;
 }
 
 /* Loader */

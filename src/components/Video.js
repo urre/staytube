@@ -57,7 +57,7 @@ class Video extends React.Component {
 			); }
 
 	render() {
-		return (<div className="sm-flex flex-wrap">
+		return (<div className="sm-flex flex-wrap center">
 			<div className="sm-col-12 p2">
 				<Helmet
   			title={`${this.state.title}`}
