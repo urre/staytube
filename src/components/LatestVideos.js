@@ -18,7 +18,7 @@ class LatestVideos extends Component {
 	fetchVideos() {
 		this.setState({ loading: true });
 
-		ajax.get(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLUIjiNV9YTmsJBus2-4vyA2zhuE4WJrwx&key=${apikey}&alt=json`)
+		ajax.get(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLUIjiNV9YTmsGucmZPzRrVR1GSlmRQ6pk&key=${apikey}&alt=json`)
 		.end((error, response) => {
 			if (!error && response) {
 				this.setState({ videos: response.body.items, loading: false });
