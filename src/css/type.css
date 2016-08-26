@@ -15,8 +15,3 @@ ul, li, p {
 	font-size: 1rem;
 	color: #FFB3B3;
 }
-
-p {
-	max-width: 45em;
-	margin: 0 auto;
-}
