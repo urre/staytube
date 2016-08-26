@@ -46,7 +46,7 @@ class Video extends React.Component {
 		return (<div>
 			<h1>{this.state.title}</h1>
 			<ul className="list-reset">
-				<li>{this.formatViews(`${this.state.stats}`)} views</li>
+				<li>{this.formatViews(`${this.state.stats}`)} YouTube views</li>
 				<li>{this.formatDefiniion(`${this.state.definition}`)}</li>
 			</ul>
 			<div className="video">
