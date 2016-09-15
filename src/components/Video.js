@@ -1,5 +1,5 @@
 import React from 'react';
-import ajax from 'superagent';
+import axios from 'axios';
 import Helmet from 'react-helmet';
 const apikey = require('./../../config');
 
@@ -19,19 +19,19 @@ class Video extends React.Component {
 	getInfo() {
 		this.setState({ loading: true });
 
-		ajax.get(`https://www.googleapis.com/youtube/v3/videos?id=${this.props.params.video}&key=${apikey}&fields=*&part=snippet,contentDetails,statistics,status`)
-		.end((error, response) => {
-			if (!error && response) {
-				this.setState({
-					title: response.body.items[0].snippet.title,
-					definition: response.body.items[0].contentDetails.definition,
-					duration: response.body.items[0].contentDetails.duration,
-					stats: response.body.items[0].statistics.viewCount,
-					loading: false,
-				});
-			}
-		}
-		);
+		axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${this.props.params.video}&key=${apikey}&fields=*&part=snippet,contentDetails,statistics,status`)
+		.then(res => {
+			this.setState({
+				title: res.data.items[0].snippet.title,
+				definition: res.data.items[0].contentDetails.definition,
+				duration: res.data.items[0].contentDetails.duration,
+				stats: res.data.items[0].statistics.viewCount,
+				loading: false,
+			});
+		})
+			.catch(error => {
+	    																															console.log(error);
+	  																					});
 	}
 
 	formatViews(amount) {

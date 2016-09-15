@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import ajax from 'superagent';
+import axios from 'axios';
 import Helmet from 'react-helmet';
 const apikey = require('./../../config');
 
@@ -17,16 +17,14 @@ class LatestVideos extends Component {
 
 	fetchVideos() {
 		this.setState({ loading: true });
-
-		ajax.get(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLUIjiNV9YTmsGucmZPzRrVR1GSlmRQ6pk&key=${apikey}&alt=json`)
-		.end((error, response) => {
-			if (!error && response) {
-				this.setState({ videos: response.body.items, loading: false });
-			} else {
-				console.log('Error fetching user data.', error);
-			}
-		}
-		);
+		axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLUIjiNV9YTmsGucmZPzRrVR1GSlmRQ6pk&key=${apikey}&alt=json`)
+		.then(res => {
+			console.log(res);
+			this.setState({ videos: res.data.items, loading: false });
+		})
+		.catch(error => {
+    																															console.log(error);
+  																					});
 	}
 
 	renderVideo() {
@@ -40,7 +38,7 @@ class LatestVideos extends Component {
 			}
 
 			if (video.snippet.title !== 'Deleted video') {
-				return (<div key={index} className="sm-col-6 lg-col-4 p2">
+				return (<div key={index} className="sm-col sm-col-6 lg-col-4 p2">
 					<Link to={`/videos/${videoClip}`} >
 						<img src={image} alt={alt} role="presentation" />
 						<p>{alt}</p>
