@@ -12,7 +12,7 @@ class Video extends React.Component {
 		};
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.getInfo();
 	}
 
@@ -30,8 +30,8 @@ class Video extends React.Component {
 			});
 		})
 			.catch(error => {
-	    																															console.log(error);
-	  																					});
+	    																																																													console.log(error);
+	  																																									});
 	}
 
 	formatViews(amount) {

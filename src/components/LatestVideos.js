@@ -11,7 +11,7 @@ class LatestVideos extends Component {
 		this.fetchVideos = this.fetchVideos.bind(this);
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.fetchVideos();
 	}
 
@@ -23,8 +23,8 @@ class LatestVideos extends Component {
 			this.setState({ videos: res.data.items, loading: false });
 		})
 		.catch(error => {
-    																															console.log(error);
-  																					});
+			console.log(error);
+		});
 	}
 
 	renderVideo() {
@@ -40,10 +40,10 @@ class LatestVideos extends Component {
 			if (video.snippet.title !== 'Deleted video') {
 				return (<div key={index} className="sm-col sm-col-6 lg-col-4 p2">
 					<Link to={`/videos/${videoClip}`} >
-						<img src={image} alt={alt} role="presentation" />
-						<p>{alt}</p>
+					<img src={image} alt={alt} role="presentation" />
+					<p>{alt}</p>
 					</Link>
-				</div>);
+					</div>);
 			}
 		});
 	}
@@ -51,12 +51,12 @@ class LatestVideos extends Component {
 	render() {
 		return (
 			<div className="sm-flex flex-wrap mxn2">
-				<Helmet
+			<Helmet
   title="Latest Videos | Staytube"
   meta={[{ property: 'og:title', content: 'Home' }]}
-				/>
-				{this.state.loading ? <div className="sk-rotating-plane"></div> : this.renderVideo()}
-				{this.props.children}
+			/>
+			{this.state.loading ? <div className="sk-rotating-plane"></div> : this.renderVideo()}
+			{this.props.children}
 			</div>
 			);
 	}
