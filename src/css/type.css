@@ -15,3 +15,8 @@ ul, li, p {
 	font-size: 1rem;
 	color: #FFB3B3;
 }
+
+li {
+	display: inline-block;
+	margin-right: 1rem;
+}

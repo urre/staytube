@@ -1,84 +1,11 @@
 @import url('../../node_modules/basscss/css/basscss.min.css');
+@import url('../../node_modules/basscss-btn/css/btn.css');
+@import url('../../node_modules/basscss-btn-outline/css/btn-outline.css');
+@import url('../../node_modules/basscss-btn-sizes/css/btn-sizes.css');
 
-html {
-	box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-	box-sizing: inherit;
-}
-
-.container {
-	max-width: 95%;
-	margin: 0 auto;
-	padding-left: .5rem;
-	padding-right: .5rem;
-}
-
-html, body {
-	height: 100%;
-	min-height: 100%;
-	margin: 0;
-	color: #666;
-}
-
-body {
-	font-size: 1.25rem;
-	font-weight: 300;
-	line-height: 2;
-	background-color: #1A1A1A;
-}
-
-
-a {
-	text-decoration: none;
-	/*color: #FFB3B3;*/
-	color: #FA4A5A;
-	transition: color 300ms ease-in-out;
-}
-
-a:hover,
-a:hover p {
-	color: #5BC392;
-}
-
-li {
-	display: inline-block;
-	margin-right: 1rem;
-}
-
-.tools li {
-	display: block;
-}
-
-/* Loader */
-.sk-rotating-plane {
-	width: 40px;
-	height: 40px;
-	background-color: #B8E5D0;
-	margin: 40px auto;
-
-	animation: sk-rotatePlane 1.2s infinite ease-in-out; }
-
-	@keyframes sk-rotatePlane {
-		0% {
-			transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-		}
-		50% {
-			transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-		}
-		100% {
-			transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-		}
-	}
-
-/* Header */
-.header {
-	/*border-bottom: 2px solid #6474AD;*/
-}
-
-.header h1 a {
-	color: #B8E5D0;
-}
+@import 'base.css';
+@import 'type.css';
+@import 'media.css';
+@import 'header.css';
+@import 'footer.css';
+@import 'loader.css';
