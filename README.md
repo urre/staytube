@@ -1,19 +1,22 @@
-# Staytube wip.
+# Staytube
 
-New website in the makings for [Staytube](https://staytu.be/)
+New website for [Staytube](https://staytu.be/)
 
 Dedicated to great full length 🎥 🎹 🎷📼 concerts on YouTube. 
 
 * React (hot reload)
 * Webpack
 * Babel (stage-0)
-* Basscss
+* Basscss (flexbox)
 * PostCSS
 * ESLint (airbnb)
-* pre-commit hooks
 * Travis
 * Ajax
-* Hosted on [Surge](https://surge.sh) or [Zeit](http://zeit.co)
+* Lazy loading
+* Pagination
+* Hosted on [Surge](https://surge.sh)
+* Cloudflare
+* Https everywhere
 
 ## Install
 
