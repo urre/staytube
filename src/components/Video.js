@@ -29,9 +29,9 @@ class Video extends React.Component {
 				loading: false,
 			});
 		})
-			.catch(error => {
-	    																																																													console.log(error);
-	  																																									});
+		.catch(error => {
+			console.log(error);
+		});
 	}
 
 	formatViews(amount) {

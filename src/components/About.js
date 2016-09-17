@@ -12,15 +12,15 @@ class About extends React.Component {
 				<h1>About</h1>
 				<p>Dedicated to great full length concerts. Exploring the concept of using "Youtube as a CMS". Made by <a href="https://twitter.com/urre">Urban Sandén (@urre)</a></p>
 				<h3>Tools</h3>
-				<ul className="list-reset tools">
-					<li>ReactJS</li>
-					<li>Babel</li>
-					<li>Webpack</li>
-					<li>PostCSS</li>
-					<li>Basscss</li>
-					<li>YouTube API</li>
-					<li>Surge</li>
-					<li>Cloudflare</li>
+				<ul className="list-reset">
+					<li className="block">ReactJS</li>
+					<li className="block">Babel</li>
+					<li className="block">Webpack</li>
+					<li className="block">PostCSS</li>
+					<li className="block">Basscss</li>
+					<li className="block">YouTube API</li>
+					<li className="block">Surge</li>
+					<li className="block">Cloudflare</li>
 				</ul>
 				</div>
 			</div>);
