@@ -54,7 +54,7 @@ class LatestVideos extends Component {
 				image = video.snippet.thumbnails.high.url;
 			}
 
-			if (video.snippet.title !== 'Deleted video' || video.snippet.title !== 'Private video') {
+			if (alt !== 'Deleted video' && alt !== 'Private video') {
 				return (<div key={index} className="sm-col sm-col-6 lg-col-4 p2">
 					<Link to={`/videos/${videoClip}`} >
 					<Image src={image} role="presentation" alt={alt} />
