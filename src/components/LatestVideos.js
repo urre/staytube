@@ -47,14 +47,14 @@ class LatestVideos extends Component {
 	renderVideos() {
 		return this.state.videos.map((video, index) => {
 			const videoClip = video.snippet.resourceId.videoId;
-			let image = 'http://placehold.it/350x150';
+			let image = 'https://placehold.it/480x360';
 			const alt = video.snippet.title;
 
 			if (video.snippet.hasOwnProperty('thumbnails')) {
 				image = video.snippet.thumbnails.high.url;
 			}
 
-			if (video.snippet.title !== 'Deleted video') {
+			if (video.snippet.title !== 'Deleted video' || video.snippet.title !== 'Private video') {
 				return (<div key={index} className="sm-col sm-col-6 lg-col-4 p2">
 					<Link to={`/videos/${videoClip}`} >
 					<Image src={image} role="presentation" alt={alt} />
