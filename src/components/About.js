@@ -1,5 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import GoMarkGithub from 'react-icons/lib/go/mark-github';
 
 class About extends React.Component {
 	render() {
@@ -22,6 +23,15 @@ class About extends React.Component {
 					<li className="block">Surge</li>
 					<li className="block">Cloudflare</li>
 				</ul>
+
+				<h3>Help building Staytube</h3>
+				<p>
+
+				<GoMarkGithub size={30} color="white" style={{ marginRight: '1rem' }} />
+
+				The Source code is on <a href="https://github.com/urre/staytube">Github.</a> <a href="https://github.com/urre/staytube/pulls">PR:s</a> are welcome!
+				</p>
+
 				</div>
 			</div>);
 	}
