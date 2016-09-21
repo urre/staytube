@@ -39,6 +39,10 @@ a {
 	transition: all 300ms ease;
 }
 
+a.active {
+	color: white;
+}
+
 a:hover,
 a:hover p {
 	color: #5BC392;

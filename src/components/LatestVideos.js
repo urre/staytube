@@ -78,8 +78,8 @@ class LatestVideos extends Component {
 			<div className="sm-col-12 p2 center">
 				<nav role="navigation">
 					<ul className="list-reset flex justify-between">
-						<li><a className="btn btn-outline btn-medium"onClick={this.prevPage}>Previous</a></li>
-						<li><a className="btn btn-outline btn-medium"onClick={this.nextPage}>Next</a></li>
+						<li><a className="btn btn-outline btn-medium" onClick={this.prevPage}>Previous</a></li>
+						<li><a className="btn btn-outline btn-medium" onClick={this.nextPage}>Next</a></li>
 					</ul>
 				</nav>
 			</div>

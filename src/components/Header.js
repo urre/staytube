@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, IndexLink } from 'react-router';
 
 const Header = () => {
 	return (
@@ -9,8 +9,8 @@ const Header = () => {
 				<Link to="/">Staytu.be</Link>
 			</h1>
 			<ul className="list-reset">
-				<li><Link to="/">Concerts</Link></li>
-				<li><Link to="/about">About</Link></li>
+				<li><IndexLink to="/" activeClassName="active">Concerts</IndexLink></li>
+				<li><Link to="/about" activeClassName="active">About</Link></li>
 			</ul>
 		</div>
 	</header>
