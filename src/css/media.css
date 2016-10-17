@@ -13,4 +13,40 @@
 
 img {
 	max-width: 100%;
+	background-color: #ccc;
+}
+
+.img-wrapper {
+	height: 0;
+	padding-bottom: 75%; /* 4:3 */
+	background-color: #1A1A1A;
+	position: relative;
+}
+
+/* Placeholder */
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 1300ms ease-in;
+}
+
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
 }
