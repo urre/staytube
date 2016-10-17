@@ -60,7 +60,8 @@
     "build": "NODE_ENV=production webpack -p --progress",
     "start": "concurrently 'npm run start:webpack' 'npm run lint:watch'",
     "lint:watch": "npm run lint -- -w --fix",
-    "lint": "esw src"
+    "lint": "esw src",
+    "deploy": "./deploy.sh"
   },
   "pre-commit": [
     "test",

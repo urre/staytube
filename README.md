@@ -14,9 +14,9 @@ Dedicated to great full length 🎥 🎹 🎷📼 concerts on YouTube.
 * Ajax
 * Lazy loading
 * Pagination
-* Hosted on [Surge](https://surge.sh)
 * Cloudflare
-* Https everywhere
+* HTTPS
+* Hosted on [Surge](https://surge.sh)
 
 ## Install
 
