@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/urre/staytube.svg?branch=master)](https://travis-ci.org/urre/staytube)
 
-New website for [Staytube](https://staytu.be/)
+Website for [Staytube](https://staytu.be/)
 
 Dedicated to great full length 🎥 🎹 🎷📼 concerts on YouTube. 
 
@@ -11,10 +11,8 @@ Dedicated to great full length 🎥 🎹 🎷📼 concerts on YouTube.
 * Babel (stage-0)
 * Basscss (flexbox)
 * PostCSS
-* ESLint (airbnb)
-* Travis
-* Ajax
-* Lazy loading
+* ESLint
+* XHR
 * Pagination
 * Cloudflare
 * HTTPS
