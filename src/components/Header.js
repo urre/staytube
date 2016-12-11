@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, IndexLink } from 'react-router';
 
 const Header = () => {
-  																				return (
+  return (
     <header className="sm-flex flex-wrap mxn2 header" role="banner">
       <div className="sm-col-12 p2 center">
         <h1><Link to="/"> Staytu.be </Link></h1>

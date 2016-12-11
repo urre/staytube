@@ -74,6 +74,7 @@ class Video extends React.Component {
 
 Video.propTypes = {
   params: React.PropTypes.object,
+  children: React.PropTypes.node
 };
 
 export default Video;

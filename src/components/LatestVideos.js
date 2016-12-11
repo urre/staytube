@@ -89,4 +89,9 @@ class LatestVideos extends Component {
       );
   }
 }
+
+LatestVideos.propTypes = {
+  children: React.PropTypes.node
+};
+
 export default LatestVideos;
