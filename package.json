@@ -9,14 +9,11 @@
     "history": "^3.0.0",
     "node-env-file": "^0.1.8",
     "react": "^15.2.0",
-    "react-addons-css-transition-group": "^15.3.2",
     "react-dom": "^15.2.0",
     "react-ga": "^2.1.2",
     "react-helmet": "^3.1.0",
     "react-icons": "^2.2.1",
-    "react-lazyload": "^2.1.6",
-    "react-router": "^2.6.1",
-    "whatwg-fetch": "^1.0.0"
+    "react-router": "^2.6.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
