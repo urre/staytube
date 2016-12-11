@@ -31,9 +31,6 @@ class Video extends React.Component {
           loading: false,
         });
       })
-      .catch(error => {
-        console.log(error);
-      });
   }
 
   formatViews(amount) {
@@ -49,7 +46,8 @@ class Video extends React.Component {
               <h1>{ this.state.title }</h1>
               <ul className="list-reset">
                 <li>
-                  { this.formatViews(`${this.state.stats}`) } YouTube views</li>
+                  { this.formatViews(`${this.state.stats}`) } YouTube views
+                </li>
                 <li>
                   { this.formatDefiniion(`${this.state.definition}`) }
                 </li>

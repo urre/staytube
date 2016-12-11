@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, IndexLink } from 'react-router';
 
 const Footer = () => {
-  return (
+  																				return (
     <footer className="footer">
       <div className="container">
         <div className="sm-flex flex-wrap mxn2">

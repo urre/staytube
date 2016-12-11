@@ -9,7 +9,6 @@ const common = {
     './src/css/main.css',
     './src/css/type.css',
     './src/css/media.css',
-    'whatwg-fetch',
     './src/index',
   ],
   output: {
@@ -64,7 +63,7 @@ if (process.env.NODE_ENV === 'production') {
     devServer: {
       contentBase: './src',
       stats: {
-      	colors: true
+        colors: true
       },
       inline: true,
       progress: true,

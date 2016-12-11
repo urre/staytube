@@ -9,7 +9,7 @@ html {
 }
 
 .container {
-	max-width: 95%;
+	max-width: 80rem;
 	margin: 0 auto;
 	padding-left: .5rem;
 	padding-right: .5rem;
@@ -28,6 +28,7 @@ body {
 	font-weight: 300;
 	line-height: 2;
 	background-color: #1A1A1A;
+	overflow-y: scroll;
 }
 
 p {

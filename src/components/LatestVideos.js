@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import Helmet from 'react-helmet';
-import LazyLoad from 'react-lazyload';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 const apikey = require('./../../config');
 
 class LatestVideos extends Component {
@@ -38,9 +36,6 @@ class LatestVideos extends Component {
           prevpagetoken: res.data.prevPageToken ? res.data.prevPageToken : '',
         });
       })
-      .catch(error => {
-        console.log(error);
-      });
   }
   nextPage(event) {
     event.preventDefault();
@@ -62,12 +57,7 @@ class LatestVideos extends Component {
         return (<div key={ index } className="sm-col sm-col-6 lg-col-4 p2">
                   <Link to={ `/videos/${videoClip}` } className="block">
                   <div className="img-wrapper">
-                    <LazyLoad throttle={ 400 } height={ 500 }>
-                      <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={ 500 } transitionLeaveTimeout={ 300 } transitionAppear={ true }
-                        transitionAppearTimeout={ 500 }>
-                        <img src={ image } role="presentation" alt={ alt } />
-                      </ReactCSSTransitionGroup>
-                    </LazyLoad>
+                    <img src={ image } role="presentation" alt={ alt } />
                   </div>
                   <p>
                     { alt }
