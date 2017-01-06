@@ -6,14 +6,14 @@ Website for [Staytube](https://staytu.be/)
 
 Dedicated to great full length 🎥 🎹 🎷📼 concerts on YouTube. 
 
-* React (hot reload)
+* React
+* HMR
 * Webpack
-* Babel (stage-0)
+* Babel
 * Basscss (flexbox)
 * PostCSS
 * ESLint
 * XHR
-* Pagination
 * Cloudflare
 * HTTPS
 * Hosted on [Surge](https://surge.sh)
