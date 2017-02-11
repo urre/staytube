@@ -8,6 +8,7 @@ const postcssUrl = require('postcss-url');
 const AssetsPlugin = require('assets-webpack-plugin');
 const assetsPluginInstance = new AssetsPlugin();
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -40,7 +41,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html'
-    })
+    }),
+    new StyleExtHtmlWebpackPlugin()
   ],
   eslint: {
     configFile: '.eslintrc'
@@ -58,7 +60,7 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: "raw-loader"
+        loader: "raw!html-minify"
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
