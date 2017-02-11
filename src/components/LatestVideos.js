@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import axios from 'axios';
 import Helmet from 'react-helmet';
 const apikey = require('./../../config');
-
 class LatestVideos extends Component {
   constructor(props) {
     super(props);
@@ -14,14 +13,11 @@ class LatestVideos extends Component {
       nextpagetoken: '',
       prevpagetoken: '',
     };
-    this.fetchVideos = this.fetchVideos.bind(this);
-    this.nextPage = this.nextPage.bind(this);
-    this.prevPage = this.prevPage.bind(this);
   }
   componentDidMount() {
     this.fetchVideos();
   }
-  fetchVideos(direction) {
+  fetchVideos = (direction) => {
     this.setState({
       loading: true,
     });
@@ -37,15 +33,15 @@ class LatestVideos extends Component {
         });
       })
   }
-  nextPage(event) {
+  nextPage = (event) => {
     event.preventDefault();
     this.fetchVideos('next', this.state.nextpagetoken);
   }
-  prevPage(event) {
+  prevPage = (event) => {
     event.preventDefault();
     this.fetchVideos('prev', this.state.prevpagetoken);
   }
-  renderVideos() {
+  renderVideos = () => {
     return this.state.videos.map((video, index) => {
       const videoClip = video.snippet.resourceId.videoId;
       let image = 'https://placehold.it/480x360';
@@ -54,13 +50,17 @@ class LatestVideos extends Component {
         image = video.snippet.thumbnails.high.url;
       }
       if (alt !== 'Deleted video' && alt !== 'Private video') {
-        return (<div key={ index } className="sm-col sm-col-6 lg-col-4 p2">
-                  <Link to={ `/videos/${videoClip}` } className="block">
-                  <div className="img-wrapper">
-                    <img src={ image } role="presentation" alt={ alt } />
+        return (<div key={index}
+                  className='sm-col sm-col-6 lg-col-4 p2'>
+                  <Link to={`/videos/${videoClip}`}
+                    className='block'>
+                  <div className='img-wrapper'>
+                    <img src={image}
+                      role='presentation'
+                      alt={alt} />
                   </div>
                   <p>
-                    { alt }
+                    {alt}
                   </p>
                   </Link>
                 </div>);
@@ -69,18 +69,21 @@ class LatestVideos extends Component {
   }
   render() {
     return (
-      <div className="sm-flex flex-wrap mxn2">
-        <Helmet title="Latest Videos | Staytube" meta={ [{ property: 'og:title', content: 'Home' }] } />
-        { this.state.loading ? <div className="sk-rotating-plane"></div> : this.renderVideos() }
-        { this.props.children }
-        <div className="sm-col-12 p2 center">
-          <nav role="navigation">
-            <ul className="list-reset flex justify-between">
+      <div className='sm-flex flex-wrap mxn2'>
+        <Helmet title='Latest Videos | Staytube'
+          meta={[{ property: 'og:title', content: 'Home' }]} />
+        {this.state.loading ? <div className='sk-rotating-plane'></div> : this.renderVideos()}
+        {this.props.children}
+        <div className='sm-col-12 p2 center'>
+          <nav role='navigation'>
+            <ul className='list-reset flex justify-between'>
               <li>
-                <a className="btn btn-outline btn-medium" onClick={ this.prevPage }>Previous</a>
+                <a className='btn btn-outline btn-medium'
+                  onClick={this.prevPage}>Previous</a>
               </li>
               <li>
-                <a className="btn btn-outline btn-medium" onClick={ this.nextPage }>Next</a>
+                <a className='btn btn-outline btn-medium'
+                  onClick={this.nextPage}>Next</a>
               </li>
             </ul>
           </nav>
@@ -93,5 +96,4 @@ class LatestVideos extends Component {
 LatestVideos.propTypes = {
   children: React.PropTypes.node
 };
-
 export default LatestVideos;
