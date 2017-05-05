@@ -4,7 +4,7 @@
 
 Website for [Staytube](https://staytu.be/)
 
-Dedicated to great full length 🎥 🎹 🎷📼 concerts on YouTube. 
+Dedicated to great full length 🎥 🎹 🎷📼 concerts on YouTube.
 
 * React
 * HMR
@@ -13,6 +13,7 @@ Dedicated to great full length 🎥 🎹 🎷📼 concerts on YouTube.
 * Basscss (flexbox)
 * PostCSS
 * ESLint
+* StyleLint
 * XHR
 * Cloudflare
 * HTTPS

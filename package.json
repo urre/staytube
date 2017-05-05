@@ -10,8 +10,9 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.dev.js",
     "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.prod.js",
-    "deploy": "cd dist && rm 200.html && cp index.html 200.html && surge . staytu.be",
-    "lint": "./node_modules/.bin/eslint ./src/**/*.js || true"
+    "lint": "./node_modules/.bin/eslint ./src/**/*.js || true",
+    "watch:lint": "node node_modules/eslint-watch/bin/esw -w ./src/**/*.js",
+    "deploy": "cd dist && cp index.html 200.html && surge . staytu.be"
   },
   "dependencies": {
     "axios": "^0.14.0",
@@ -41,12 +42,13 @@
     "concurrently": "^2.1.0",
     "css-loader": "^0.23.1",
     "eslint": "^3.15.0",
-    "eslint-config-airbnb": "^9.0.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-friendly-formatter": "^2.0.7",
     "eslint-loader": "^1.6.1",
-    "eslint-plugin-import": "^1.10.0",
-    "eslint-plugin-jsx-a11y": "^1.5.3",
-    "eslint-plugin-react": "^6.8.0",
-    "eslint-watch": "^2.1.12",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.9.0",
+    "eslint-watch": "^2.1.14",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.28.0",
     "optimize-css-assets-webpack-plugin": "^1.3.0",

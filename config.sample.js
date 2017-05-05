@@ -1,1 +1,1 @@
-module.exports = "XXXXXXXX"; // YouTube API key
+module.exports = 'XXXXXXXX'; // YouTube API key

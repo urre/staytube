@@ -2,11 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const autoprefixer = require('autoprefixer');
-const postcssImport = require('postcss-import');
-const postcssUrl = require('postcss-url');
-const AssetsPlugin = require('assets-webpack-plugin');
-const assetsPluginInstance = new AssetsPlugin();
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
 
@@ -17,13 +12,13 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: "[name]-[hash].js",
+    filename: '[name]-[hash].js'
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
-        warnings: false,
-      },
+        warnings: false
+      }
     }),
     new OptimizeCssAssetsPlugin({
       cssProcessor: require('cssnano'),
@@ -52,7 +47,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loaders: ["babel-loader", "eslint-loader"]
+        loaders: ['babel-loader', 'eslint-loader']
       },
       {
         test: /\.css$/,
@@ -60,7 +55,7 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: "raw!html-minify"
+        loader: 'raw!html-minify'
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
@@ -69,4 +64,4 @@ module.exports = {
       }
     ]
   }
-}
+};

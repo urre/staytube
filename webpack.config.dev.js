@@ -14,7 +14,7 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'docs'),
-    filename: "[name]-[hash].js",
+    filename: '[name]-[hash].js'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -30,7 +30,7 @@ module.exports = {
       context: 'src',
       files: 'css/*.css',
       failOnError: false,
-      quiet: false,
+      quiet: false
     })
   ],
   eslint: {
@@ -41,7 +41,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
-        loaders: ["babel-loader", "eslint-loader"]
+        loaders: ['babel-loader', 'eslint-loader']
       },
       {
         test: /\.css$/,
@@ -64,4 +64,4 @@ module.exports = {
     colors: true,
     inline: true
   }
-}
+};
