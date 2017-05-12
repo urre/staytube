@@ -13,8 +13,9 @@ module.exports = {
     './src/index'
   ],
   output: {
-    path: path.join(__dirname, 'docs'),
-    filename: '[name]-[hash].js'
+    path: __dirname + '/dist',
+    filename: '[name]-[hash].js',
+    publicPath: '/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -59,9 +60,10 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: './docs',
+    contentBase: './src',
     hot: true,
     colors: true,
-    inline: true
+    inline: true,
+    historyApiFallback: true
   }
 };
