@@ -27,6 +27,7 @@
     "react-lazyload": "^2.1.6",
     "react-router": "^2.6.1",
     "react-router-sitemap": "^1.0.8",
+    "sitemap-generator": "^6.0.0",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
