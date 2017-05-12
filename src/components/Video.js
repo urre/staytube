@@ -23,6 +23,7 @@ class Video extends React.Component {
           title: res.data.items[0].snippet.title,
           definition: res.data.items[0].contentDetails.definition,
           duration: res.data.items[0].contentDetails.duration,
+          image: res.data.items[0].snippet.thumbnails.high.url,
           stats: res.data.items[0].statistics.viewCount,
           loading: false
         });
@@ -46,6 +47,9 @@ class Video extends React.Component {
         </li>
       </ul>
       <div className='video'>
+        <noscript>
+          <img src={this.state.image} alt={this.state.title} />
+        </noscript>
         <iframe src={`https://www.youtube.com/embed/${this.props.params.video}?rel=03&ampautohide=1&ampshowinfo=0`}
           frameBorder='0'
           allowFullScreen />

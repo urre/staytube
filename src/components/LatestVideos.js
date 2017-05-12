@@ -11,36 +11,37 @@ class LatestVideos extends Component {
       error: false,
       videos: [],
       nextpagetoken: '',
-      prevpagetoken: '',
+      prevpagetoken: ''
     };
   }
   componentDidMount() {
     this.fetchVideos();
   }
-  fetchVideos = (direction) => {
+  fetchVideos = direction => {
     this.setState({
-      loading: true,
+      loading: true
     });
-    const token = direction == 'next' ? this.state.nextpagetoken : this.state.prevpagetoken;
+    const token = direction == 'next'
+      ? this.state.nextpagetoken
+      : this.state.prevpagetoken;
     const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=30&pageToken=${token}&playlistId=PLUIjiNV9YTmsGucmZPzRrVR1GSlmRQ6pk&key=${apikey}&alt=json`;
-    axios.get(url)
-      .then(res => {
-        this.setState({
-          videos: res.data.items,
-          loading: false,
-          nextpagetoken: res.data.nextPageToken ? res.data.nextPageToken : '',
-          prevpagetoken: res.data.prevPageToken ? res.data.prevPageToken : '',
-        });
-      })
-  }
-  nextPage = (event) => {
+    axios.get(url).then(res => {
+      this.setState({
+        videos: res.data.items,
+        loading: false,
+        nextpagetoken: res.data.nextPageToken ? res.data.nextPageToken : '',
+        prevpagetoken: res.data.prevPageToken ? res.data.prevPageToken : ''
+      });
+    });
+  };
+  nextPage = event => {
     event.preventDefault();
     this.fetchVideos('next', this.state.nextpagetoken);
-  }
-  prevPage = (event) => {
+  };
+  prevPage = event => {
     event.preventDefault();
     this.fetchVideos('prev', this.state.prevpagetoken);
-  }
+  };
   renderVideos = () => {
     return this.state.videos.map((video, index) => {
       const videoClip = video.snippet.resourceId.videoId;
@@ -50,46 +51,56 @@ class LatestVideos extends Component {
         image = video.snippet.thumbnails.high.url;
       }
       if (alt !== 'Deleted video' && alt !== 'Private video') {
-        return (<div key={index}
-                  className='sm-col sm-col-6 lg-col-4 p2'>
-                  <Link to={`/videos/${videoClip}`}
-                    className='block'>
-                  <div className='img-wrapper'>
-                    <img src={image}
-                      role='presentation'
-                      alt={alt} />
-                  </div>
-                  <p>
-                    {alt}
-                  </p>
-                  </Link>
-                </div>);
+        return (
+          <div key={index} className='sm-col sm-col-6 lg-col-4 p2'>
+            <Link to={`/videos/${videoClip}`} className='block'>
+              <div className='img-wrapper'>
+                <img src={image} role='presentation' alt={alt} />
+              </div>
+              <p>
+                {alt}
+              </p>
+            </Link>
+          </div>
+        );
       }
     });
-  }
+  };
   render() {
     return (
       <div className='sm-flex flex-wrap mxn2'>
-        <Helmet title='Latest Videos | Staytube'
-          meta={[{ property: 'og:title', content: 'Home' }]} />
-        {this.state.loading ? <div className='sk-rotating-plane'></div> : this.renderVideos()}
+        <Helmet
+          title='Latest Videos | Staytube'
+          meta={[{ property: 'og:title', content: 'Home' }]}
+        />
+        {this.state.loading
+          ? <div className='sk-rotating-plane' />
+          : this.renderVideos()}
         {this.props.children}
         <div className='sm-col-12 p2 center'>
           <nav role='navigation'>
             <ul className='list-reset flex justify-between'>
               <li>
-                <a className='btn btn-outline btn-medium'
-                  onClick={this.prevPage}>Previous</a>
+                <a
+                  className='btn btn-outline btn-medium'
+                  onClick={this.prevPage}
+                >
+                  Previous
+                </a>
               </li>
               <li>
-                <a className='btn btn-outline btn-medium'
-                  onClick={this.nextPage}>Next</a>
+                <a
+                  className='btn btn-outline btn-medium'
+                  onClick={this.nextPage}
+                >
+                  Next
+                </a>
               </li>
             </ul>
           </nav>
         </div>
       </div>
-      );
+    );
   }
 }
 
