@@ -1,6 +1,6 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import GoMarkGithub from 'react-icons/lib/go/mark-github';
+import React from 'react'
+import Helmet from 'react-helmet'
+import GoMarkGithub from 'react-icons/lib/go/mark-github'
 
 class About extends React.Component {
   render () {
@@ -14,29 +14,29 @@ class About extends React.Component {
         <h3>Tools</h3>
         <ul className='list-reset'>
           <li className='block'>
-                    ReactJS
-                  </li>
+          ReactJS
+          </li>
           <li className='block'>
-                    Babel
-                  </li>
+          Babel
+          </li>
           <li className='block'>
-                    Webpack
-                  </li>
+          Webpack
+          </li>
           <li className='block'>
-                    PostCSS
-                  </li>
+          PostCSS
+          </li>
           <li className='block'>
-                    Basscss
-                  </li>
+          Basscss
+          </li>
           <li className='block'>
-                    YouTube API
-                  </li>
+          YouTube API
+          </li>
           <li className='block'>
-                    Surge
-                  </li>
+          Surge
+          </li>
           <li className='block'>
-                    Cloudflare
-                  </li>
+          Cloudflare
+          </li>
         </ul>
         <h3>Help building Staytube</h3>
         <p>

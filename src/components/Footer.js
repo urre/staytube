@@ -15,7 +15,8 @@ const Footer = () => {
                   </IndexLink>
                 </li>
                 <li className='mr3'>
-                  <Link to='/about'> About
+                  <Link to='/about'>
+                    {' '}About
                   </Link>
                 </li>
                 <li className='mr3'>
@@ -31,4 +32,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
