@@ -72,9 +72,9 @@ class LatestVideos extends Component {
 
       <Helmet title={'Latest videos | Staytube'}
         meta={[
-          { name: 'description', content: `${this.state.description}` },
-          { property: 'og:title', content: `${this.state.title}` },
-          { property: 'og:description', content: `${this.state.description}` },
+          { name: 'description', content: 'Latest videos from Staytube' },
+          { property: 'og:title', content: 'Latest videos' },
+          { property: 'og:description', content: 'Latest videos from Staytube' },
           { property: 'og:image', content: 'https://res.cloudinary.com/urre/image/upload/v1495467361/epvi1qppu4y7llo0hmmw.png' }
         ]}
         />
