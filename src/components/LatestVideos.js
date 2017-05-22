@@ -69,10 +69,16 @@ class LatestVideos extends Component {
   render() {
     return (
       <div className='sm-flex flex-wrap mxn2'>
-        <Helmet
-          title='Latest Videos | Staytube'
-          meta={[{ property: 'og:title', content: 'Home' }]}
+
+      <Helmet title={'Latest videos | Staytube'}
+        meta={[
+          { name: 'description', content: `${this.state.description}` },
+          { property: 'og:title', content: `${this.state.title}` },
+          { property: 'og:description', content: `${this.state.description}` },
+          { property: 'og:image', content: 'https://res.cloudinary.com/urre/image/upload/v1495467361/epvi1qppu4y7llo0hmmw.png' }
+        ]}
         />
+
         {this.state.loading
           ? <div className='sk-rotating-plane' />
           : this.renderVideos()}

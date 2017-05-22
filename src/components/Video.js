@@ -19,8 +19,10 @@ class Video extends React.Component {
     });
     axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${this.props.params.video}&key=${apikey}&fields=*&part=snippet,contentDetails,statistics,status`)
       .then(res => {
+        console.log(res);
         this.setState({
           title: res.data.items[0].snippet.title,
+          description: res.data.items[0].snippet.description.replace(/\n|\r/g, ''),
           definition: res.data.items[0].contentDetails.definition,
           duration: res.data.items[0].contentDetails.duration,
           image: res.data.items[0].snippet.thumbnails.high.url,
@@ -61,7 +63,13 @@ class Video extends React.Component {
     return (<div className='sm-flex flex-wrap center'>
       <div className='sm-col-12 p2'>
         <Helmet title={`${this.state.title}`}
-          meta={[{ property: 'og:title', content: `${this.state.title}` }]} />
+          meta={[
+            { name: 'description', content: `${this.state.description}` },
+            { property: 'og:title', content: `${this.state.title}` },
+            { property: 'og:description', content: `${this.state.description}` },
+            { property: 'og:image', content: `${this.state.image}` }
+          ]}
+          />
         {this.state.loading ? <div className='sk-rotating-plane' /> : this.renderVideo()}
         {this.props.children}
       </div>

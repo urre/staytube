@@ -18,6 +18,7 @@ function saveItems(token) {
 	.then(res => {
 		if(res.data.nextPageToken !== 'undefined') {
 			token = res.data.nextPageToken
+
 		}
 	 	saveItem(res.data.items)
 	})
