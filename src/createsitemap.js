@@ -4,7 +4,7 @@ import axios from 'axios'
 let token = ''
 const apikey = require('./../config')
 
-fs.writeFile('../sitemap.xml', "<?xml version='1.0' encoding='UTF-8'?>\n<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>", function(err) {
+fs.writeFile('../dist/sitemap.xml', "<?xml version='1.0' encoding='UTF-8'?>\n<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>", function(err) {
 	if(err) {
 		return console.log(err);
 	}
@@ -33,7 +33,7 @@ function saveItems(token) {
 function saveItem(data) {
 	return data.map((video, index) => {
 		if(video.snippet.thumbnails) {
-			fs.appendFileSync('../sitemap.xml', "\n\t<url>\n\t\t<loc>https://staytu.be/videos/"+video.snippet.resourceId.videoId+"</loc>\n</url>");
+			fs.appendFileSync('../dist/sitemap.xml', "\n\t<url>\n\t\t<loc>https://staytu.be/videos/"+video.snippet.resourceId.videoId+"</loc>\n</url>");
 		}
   })
 }
@@ -43,5 +43,5 @@ saveItems(token)
 
 // Note to self: Sloppy, dumb and just silly
 setTimeout(function(){
-	fs.appendFileSync('../sitemap.xml', "\n</urlset>")
+	fs.appendFileSync('../dist/sitemap.xml', "\n</urlset>")
 }, 3000)

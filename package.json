@@ -12,7 +12,8 @@
     "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.prod.js",
     "lint": "./node_modules/.bin/eslint ./src/**/*.js || true",
     "watch:lint": "node node_modules/eslint-watch/bin/esw -w ./src/**/*.js",
-    "deploy": "cd dist && cp index.html 200.html && surge . staytu.be"
+    "sitemap": "cd src && babel-node createsitemap.js",
+    "deploy": "cd dist cp index.html 200.html && surge . staytu.be"
   },
   "dependencies": {
     "axios": "^0.14.0",
