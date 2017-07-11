@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import Helmet from 'react-helmet';
 const apikey = require('./../../config');

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -10,9 +10,9 @@ const Footer = () => {
             <nav role='navigation'>
               <ul className='list-reset flex justify-center'>
                 <li className='mr3'>
-                  <IndexLink to='/'>
+                  <Link to='/'>
                     Concerts
-                  </IndexLink>
+                  </Link>
                 </li>
                 <li className='mr3'>
                   <Link to='/about'>

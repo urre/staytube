@@ -6,7 +6,6 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
 
 module.exports = {
-  devtool: 'source-map',
   entry: [
     './src/index'
   ],
@@ -16,6 +15,11 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false
@@ -38,7 +42,7 @@ module.exports = {
       filename: 'index.html',
       template: './src/index.html'
     }),
-    new StyleExtHtmlWebpackPlugin()
+    // new StyleExtHtmlWebpackPlugin()
   ],
   eslint: {
     configFile: '.eslintrc'
@@ -52,11 +56,13 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', '!css-loader?sourceMap&importLoaders=1!postcss-loader')
+        loader: ExtractTextPlugin.extract(
+            'style-loader', 'css-loader'
+        )
       },
       {
         test: /\.html$/,
-        loader: 'raw!html-minify'
+        loader: 'raw'
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
