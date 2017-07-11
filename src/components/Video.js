@@ -17,9 +17,8 @@ class Video extends React.Component {
     this.setState({
       loading: true
     });
-    axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${this.props.params.video}&key=${apikey}&fields=*&part=snippet,contentDetails,statistics,status`)
+    axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${this.props.match.params.video}&key=${apikey}&fields=*&part=snippet,contentDetails,statistics,status`)
       .then(res => {
-        console.log(res);
         this.setState({
           title: res.data.items[0].snippet.title,
           description: res.data.items[0].snippet.description.replace(/\n|\r/g, ''),
@@ -52,7 +51,7 @@ class Video extends React.Component {
         <noscript>
           <img src={this.state.image} alt={this.state.title} />
         </noscript>
-        <iframe src={`https://www.youtube.com/embed/${this.props.params.video}?rel=03&ampautohide=1&ampshowinfo=0`}
+        <iframe src={`https://www.youtube.com/embed/${this.props.match.params.video}?rel=03&ampautohide=1&ampshowinfo=0`}
           frameBorder='0'
           allowFullScreen />
       </div>

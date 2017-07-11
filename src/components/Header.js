@@ -1,20 +1,18 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
+import { NavLink } from 'react-router-dom'
 
 const Header = () => {
   return (
     <header className='sm-flex flex-wrap mxn2 header' role='banner'>
       <div className='sm-col-12 p2 center'>
-        <h1><Link to='/'> Staytu.be </Link></h1>
+        <h1><NavLink to='/'> Staytu.be </NavLink></h1>
         <ul className='list-reset'>
           <li>
-            <IndexLink to='/' className='btn btn-outline btn-medium' activeClassName='btn-active'>
-              Concerts
-            </IndexLink>
+            <NavLink exact={true} strict to='/' className='btn btn-outline btn-medium' activeClassName='btn-active'>Concerts
+            </NavLink>
           </li>
           <li>
-            <Link to='/about' className='btn btn-outline btn-medium' activeClassName='btn-active'> About
-            </Link>
+            <NavLink exact={true} strict to='/about' className='btn btn-outline btn-medium' activeClassName='btn-active'>About</NavLink>
           </li>
         </ul>
       </div>

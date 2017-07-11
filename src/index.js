@@ -1,26 +1,15 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Router, browserHistory } from 'react-router';
+import { render } from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
+import App from './components/App'
+import routes from './routes'
 
-import routes from './routes';
-
-import './css/main.css';
-import './css/type.css';
-import './css/media.css';
-
-const ReactGA = require('react-ga');
-ReactGA.initialize('UA-5407647-48');
-
-const logPageView = () => {
-  ReactGA.set({
-    page: window.location.pathname
-  });
-  ReactGA.pageview(window.location.pathname);
-};
+import './css/main.css'
+import './css/type.css'
+import './css/media.css'
 
 render((
-  <Router history={browserHistory}
-    onUpdate={logPageView}>
-    {routes}
-  </Router>
-  ), document.getElementById('main'));
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+  ), document.getElementById('main'))

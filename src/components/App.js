@@ -1,23 +1,23 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
+import Main from './Main'
 
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <div className='container'>
-          <Header />
-          {this.props.children}
+      <BrowserRouter>
+        <div>
+          <div className='container'>
+            <Header />
+            <Main />
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    );
+      </BrowserRouter>
+    )
   }
 }
 
-App.propTypes = {
-  children: React.PropTypes.node
-};
-
-export default App;
+export default App

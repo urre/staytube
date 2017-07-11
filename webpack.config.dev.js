@@ -14,12 +14,12 @@ module.exports = {
   ],
   output: {
     path: __dirname + '/dist',
-    filename: '[name]-[hash].js',
+    filename: '[name].js',
     publicPath: '/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin('style-[hash].css', {
+    new ExtractTextPlugin('style.css', {
       allChunks: true
     }),
     new HtmlWebpackPlugin({
