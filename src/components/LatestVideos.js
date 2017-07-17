@@ -55,7 +55,7 @@ class LatestVideos extends Component {
           <div key={index} className='sm-col sm-col-6 lg-col-4 p2'>
             <Link to={`/videos/${videoClip}`} className='block'>
               <div className='img-wrapper'>
-                <img src={`https://res.cloudinary.com/urre/image/youtube/w_480,h_360,c_fill/${videoClip}.jpg`} role='presentation' alt={alt} />
+                <img src={`https://res.cloudinary.com/urre/image/youtube/w_480,h_360,c_fill,q_40/${videoClip}.jpg`} role='presentation' alt={alt} />
               </div>
               <p>
                 {alt}
