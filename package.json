@@ -14,8 +14,9 @@
     "lint": "./node_modules/.bin/eslint ./src/**/*.js || true",
     "watch:lint": "node node_modules/eslint-watch/bin/esw -w ./src/**/*.js",
     "sitemap": "cd src && babel-node createsitemap.js",
-    "deploy": "cd dist && cp index.html 200.html && surge . staytu.be",
-    "release": "npm run build && npm run sitemap && npm run critical && npm run deploy"
+    "deploy": "surge ./dist staytu.be",
+    "enable-surge-spa": "cd dist && cp index.html 200.html",
+    "release": "npm run build && npm run sitemap && npm run critical && npm run enable-surge-spa && npm run deploy"
   },
   "dependencies": {
     "axios": "^0.14.0",
@@ -58,6 +59,7 @@
     "eslint-watch": "^2.1.14",
     "extract-text-webpack-plugin": "^1.0.1",
     "history": "^3.3.0",
+    "html-minifier-cli": "^0.1.0",
     "html-minify-loader": "^1.3.0",
     "html-webpack-plugin": "^2.29.0",
     "optimize-css-assets-webpack-plugin": "^1.3.0",

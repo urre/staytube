@@ -6,5 +6,9 @@ critical.generate({
     src: 'index.html',
     dest: 'index.html',
     width: 1300,
-    height: 900
+    height: 1200,
+    minify: true,
+    extract: true,
+    inline: true,
+    pathPrefix: "/css"
 });
