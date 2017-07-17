@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -42,7 +43,9 @@ module.exports = {
       filename: 'index.html',
       template: './src/index.html'
     }),
-    // new StyleExtHtmlWebpackPlugin()
+     new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'async'
+    })
   ],
   eslint: {
     configFile: '.eslintrc'
@@ -62,7 +65,7 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: 'raw'
+        loader: 'raw!html-minify'
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,

@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
@@ -26,6 +27,9 @@ module.exports = {
       filename: 'index.html',
       template: './src/index.html'
     }),
+    new ScriptExtHtmlWebpackPlugin({
+     defaultAttribute: 'async'
+   }),
     new StyleLintPlugin({
       configFile: '.stylelintrc',
       context: 'src',
