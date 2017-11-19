@@ -7,7 +7,6 @@
 			"except": ["value"]
 		}],
 		"max-empty-lines": 2,
-		"unit-whitelist": ["em", "rem", "%", "s", "ms", "vh", "vw", "vmin", "px", "deg"],
-		"selector-no-id": true
+		"unit-whitelist": ["em", "rem", "%", "s", "ms", "vh", "vw", "vmin", "px", "deg"]
 	}
 }
