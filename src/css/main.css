@@ -1,11 +1,9 @@
-@import url('../../node_modules/basscss/css/basscss.min.css');
-@import url('../../node_modules/basscss-btn/css/btn.css');
-@import url('../../node_modules/basscss-btn-outline/css/btn-outline.css');
-@import url('../../node_modules/basscss-btn-sizes/css/btn-sizes.css');
+@import url("../../node_modules/basscss/css/basscss.min.css");
 
-@import 'base.css';
-@import 'type.css';
-@import 'media.css';
-@import 'header.css';
-@import 'footer.css';
-@import 'loader.css';
+@import "base.css";
+@import "type.css";
+@import "media.css";
+@import "header.css";
+@import "footer.css";
+@import "loader.css";
+@import "buttons.css";
