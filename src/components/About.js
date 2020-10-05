@@ -49,9 +49,6 @@ class About extends React.Component {
           </p>
 
           <p>
-            Some React things are pretty old by now, but everything still works.
-          </p>
-          <p>
             <GoMarkGithub
               size={30}
               color="white"
