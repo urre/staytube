@@ -26,26 +26,30 @@ class About extends React.Component {
               {
                 name: 'description',
                 content:
-                  'Dedicated to great full length concerts. Exploring the concept of using Youtube as a CMS. Made by Urban Sandén (@urre)'
+                  'Dedicated to great full length concerts. Exploring the concept of using Youtube as a CMS. Made by Urban Sandén (@urre)',
               },
               { property: 'og:title', content: 'About' },
               {
                 property: 'og:description',
                 content:
-                  'Dedicated to great full length concerts. Exploring the concept of using Youtube as a CMS. Made by Urban Sandén (@urre)'
+                  'Dedicated to great full length concerts. Exploring the concept of using Youtube as a CMS. Made by Urban Sandén (@urre)',
               },
               {
                 property: 'og:image',
                 content:
-                  'https://res.cloudinary.com/urre/image/upload/v1495467361/epvi1qppu4y7llo0hmmw.png'
-              }
+                  'https://res.cloudinary.com/urre/image/upload/v1495467361/epvi1qppu4y7llo0hmmw.png',
+              },
             ]}
           />
           <h1>About</h1>
           <p>
             Dedicated to great full length concerts. Exploring the concept of
             using Youtube as a CMS. Made by{' '}
-            <a href="https://twitter.com/urre">Urban Sandén (@urre)</a>
+            <a href="https://twitter.com/urre">Urban Sandén (@urre) in 2014.</a>
+          </p>
+
+          <p>
+            Some React things are pretty old by now, but everything still works.
           </p>
           <p>
             <GoMarkGithub

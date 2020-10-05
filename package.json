@@ -9,15 +9,12 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.dev.js",
-    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.prod.js",
-    "critical": "node critical.js",
-    "lint": "./node_modules/.bin/eslint ./src/**/*.js || true",
-    "watch:lint": "node node_modules/eslint-watch/bin/esw -w ./src/**/*.js",
+    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.prod.js && npm run build:assets",
+    "format:js": "npx prettier --write './src/**/*.js'",
+    "format:css": "npx stylelint ./src/**/*.css --fix'",
+    "format": "npm run format:js && npm run format:css",
     "sitemap": "cd src && babel-node createsitemap.js",
-    "copystatic": "cd src && cp -R images ../dist/",
-    "deploy": "surge ./dist staytu.be",
-    "enable-surge-spa": "cd dist && cp temp.html 200.html && cp temp.html index.html",
-    "release": "npm run build && npm run sitemap && npm run critical && npm run enable-surge-spa && npm run copystatic && npm run deploy"
+    "build:assets": "cd src && cp -R images ../dist/"
   },
   "dependencies": {
     "axios": "^0.14.0",
@@ -73,6 +70,7 @@
     "postcss-url": "^5.1.2",
     "pre-commit": "^1.1.3",
     "precss": "^1.4.0",
+    "prettier": "2.1.2",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.2.0",
     "react-hot-loader": "^1.3.0",

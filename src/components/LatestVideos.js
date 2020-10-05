@@ -21,7 +21,7 @@ class LatestVideos extends Component {
       error: false,
       videos: [],
       nextpagetoken: '',
-      prevpagetoken: ''
+      prevpagetoken: '',
     }
   }
   componentWillMount() {
@@ -31,29 +31,29 @@ class LatestVideos extends Component {
   componentDidMount() {
     this.fetchVideos()
   }
-  fetchVideos = direction => {
+  fetchVideos = (direction) => {
     this.setState({
-      loading: true
+      loading: true,
     })
     const token =
       direction == 'next' ? this.state.nextpagetoken : this.state.prevpagetoken
 
     const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=30&pageToken=${token}&playlistId=PLUIjiNV9YTmsGucmZPzRrVR1GSlmRQ6pk&key=${apikey}&alt=json`
 
-    axios.get(url).then(res => {
+    axios.get(url).then((res) => {
       this.setState({
         videos: res.data.items,
         loading: false,
         nextpagetoken: res.data.nextPageToken ? res.data.nextPageToken : '',
-        prevpagetoken: res.data.prevPageToken ? res.data.prevPageToken : ''
+        prevpagetoken: res.data.prevPageToken ? res.data.prevPageToken : '',
       })
     })
   }
-  nextPage = event => {
+  nextPage = (event) => {
     event.preventDefault()
     this.fetchVideos('next', this.state.nextpagetoken)
   }
-  prevPage = event => {
+  prevPage = (event) => {
     event.preventDefault()
     this.fetchVideos('prev', this.state.prevpagetoken)
   }
@@ -62,9 +62,6 @@ class LatestVideos extends Component {
       const videoClip = video.snippet.resourceId.videoId
       let image = 'https://placehold.it/480x360'
       const alt = video.snippet.title
-      if (video.snippet.hasOwnProperty('thumbnails')) {
-        image = video.snippet.thumbnails.high.url
-      }
       if (alt !== 'Deleted video' && alt !== 'Private video') {
         return (
           <div key={index} className="sm-col sm-col-6 lg-col-4 p2">
@@ -93,13 +90,13 @@ class LatestVideos extends Component {
             { property: 'og:title', content: 'Latest videos' },
             {
               property: 'og:description',
-              content: 'Latest videos from Staytube'
+              content: 'Latest videos from Staytube',
             },
             {
               property: 'og:image',
               content:
-                'https://res.cloudinary.com/urre/image/upload/v1495467361/epvi1qppu4y7llo0hmmw.png'
-            }
+                'https://res.cloudinary.com/urre/image/upload/v1495467361/epvi1qppu4y7llo0hmmw.png',
+            },
           ]}
         />
 
@@ -143,6 +140,6 @@ class LatestVideos extends Component {
 }
 
 LatestVideos.propTypes = {
-  children: React.PropTypes.node
+  children: React.PropTypes.node,
 }
 export default LatestVideos

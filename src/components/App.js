@@ -8,28 +8,28 @@ import Main from './Main'
 
 const history = createBrowserHistory()
 history.listen((location, action) => {
-	ReactGA.set({ page: location.pathname })
-	ReactGA.pageview(location.pathname)
+  ReactGA.set({ page: location.pathname })
+  ReactGA.pageview(location.pathname)
 })
 
 class App extends React.Component {
-	componentWillMount() {
-		ReactGA.set({ page: location.pathname })
-		ReactGA.pageview(location.pathname)
-	}
-	render() {
-		return (
-			<BrowserRouter>
-				<div>
-					<div className="container">
-						<Header />
-						<Main />
-					</div>
-					<Footer />
-				</div>
-			</BrowserRouter>
-		)
-	}
+  componentWillMount() {
+    ReactGA.set({ page: location.pathname })
+    ReactGA.pageview(location.pathname)
+  }
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <div className="container">
+            <Header />
+            <Main />
+          </div>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    )
+  }
 }
 
 export default App

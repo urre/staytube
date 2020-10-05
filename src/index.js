@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import App from './components/App'
@@ -8,8 +8,9 @@ import './css/main.css'
 import './css/type.css'
 import './css/media.css'
 
-render((
+render(
   <BrowserRouter>
     <App />
-  </BrowserRouter>
-  ), document.getElementById('main'))
+  </BrowserRouter>,
+  document.getElementById('main')
+)

@@ -16,7 +16,7 @@ class Video extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      info: []
+      info: [],
     }
   }
   componentWillMount() {
@@ -28,15 +28,13 @@ class Video extends React.Component {
   }
   getInfo() {
     this.setState({
-      loading: true
+      loading: true,
     })
     axios
       .get(
-        `https://www.googleapis.com/youtube/v3/videos?id=${
-          this.props.match.params.video
-        }&key=${apikey}&fields=*&part=snippet,contentDetails,statistics,status`
+        `https://www.googleapis.com/youtube/v3/videos?id=${this.props.match.params.video}&key=${apikey}&fields=*&part=snippet,contentDetails,statistics,status`
       )
-      .then(res => {
+      .then((res) => {
         this.setState({
           title: res.data.items[0].snippet.title,
           description: res.data.items[0].snippet.description.replace(
@@ -47,7 +45,7 @@ class Video extends React.Component {
           duration: res.data.items[0].contentDetails.duration,
           image: res.data.items[0].snippet.thumbnails.high.url,
           stats: res.data.items[0].statistics.viewCount,
-          loading: false
+          loading: false,
         })
       })
   }
@@ -65,9 +63,7 @@ class Video extends React.Component {
             <img src={this.state.image} alt={this.state.title} />
           </noscript>
           <iframe
-            src={`https://www.youtube.com/embed/${
-              this.props.match.params.video
-            }?rel=03&ampautohide=1&ampshowinfo=0`}
+            src={`https://www.youtube.com/embed/${this.props.match.params.video}?rel=03&ampautohide=1&ampshowinfo=0`}
             frameBorder="0"
             allowFullScreen
           />
@@ -91,9 +87,9 @@ class Video extends React.Component {
               { property: 'og:title', content: `${this.state.title}` },
               {
                 property: 'og:description',
-                content: `${this.state.description}`
+                content: `${this.state.description}`,
               },
-              { property: 'og:image', content: `${this.state.image}` }
+              { property: 'og:image', content: `${this.state.image}` },
             ]}
           />
           {this.state.loading ? (
@@ -109,6 +105,6 @@ class Video extends React.Component {
 }
 Video.propTypes = {
   params: React.PropTypes.object,
-  children: React.PropTypes.node
+  children: React.PropTypes.node,
 }
 export default Video

@@ -4,3 +4,5 @@ dist
 *.sh
 .vscode
 .env
+
+.vercel

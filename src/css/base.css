@@ -1,54 +1,54 @@
 html {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 .container {
-    max-width: 80rem;
-    margin: 0 auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+	max-width: 80rem;
+	margin: 0 auto;
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 
 html,
 body {
-    height: 100%;
-    min-height: 100%;
-    margin: 0;
-    color: #ccc;
+	height: 100%;
+	min-height: 100%;
+	margin: 0;
+	color: #ccc;
 }
 
 body {
-    font-size: 1.25rem;
-    font-weight: 300;
-    line-height: 2;
-    background-color: black;
-    overflow-y: scroll;
+	font-size: 1.25rem;
+	font-weight: 300;
+	line-height: 2;
+	background-color: black;
+	overflow-y: scroll;
 }
 
 p {
-    transition: color 300ms ease-in-out;
+	transition: color 300ms ease-in-out;
 }
 
 a {
-    text-decoration: none;
-    color: white;
-    transition: all 300ms ease;
+	text-decoration: none;
+	color: white;
+	transition: all 300ms ease;
 }
 
 a:not(.btn):hover {
-    color: rgb(6, 132, 248);
-    text-decoration: underline;
+	color: rgb(6, 132, 248);
+	text-decoration: underline;
 }
 
 .btn.btn-active {
-    color: white;
-    background-color: rgb(6, 132, 248);
-    background-image: linear-gradient(rgb(6, 132, 248), rgb(6, 122, 228));
-    border-color: rgb(6, 122, 228);
+	color: white;
+	background-color: rgb(6, 132, 248);
+	background-image: linear-gradient(rgb(6, 132, 248), rgb(6, 122, 228));
+	border-color: rgb(6, 122, 228);
 }
