@@ -1,6 +1,6 @@
 {
   "name": "staytube",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "Great full length concerts from YouTube",
   "main": "src/main.js",
   "repository": {
@@ -9,12 +9,13 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.dev.js",
-    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.prod.js && npm run build:assets",
+    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.prod.js && npm run build:assets && npm run sitemap",
+    "build:assets": "cd src && cp -R images ../dist/",
     "format:js": "npx prettier --write './src/**/*.js'",
     "format:css": "npx stylelint ./src/**/*.css --fix'",
     "format": "npm run format:js && npm run format:css",
     "sitemap": "cd src && babel-node createsitemap.js",
-    "build:assets": "cd src && cp -R images ../dist/"
+    "deploy": "vercel --prod"
   },
   "dependencies": {
     "axios": "^0.14.0",
