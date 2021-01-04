@@ -18,7 +18,7 @@
     "deploy": "vercel --prod"
   },
   "dependencies": {
-    "axios": "^0.14.0",
+    "axios": "^0.21.1",
     "basscss": "^8.0.2",
     "node-env-file": "^0.1.8",
     "react": "^15.2.0",
