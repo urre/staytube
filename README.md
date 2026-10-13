@@ -1,7 +1,5 @@
 # Staytube
 
-[![Build Status](https://travis-ci.org/urre/staytube.svg?branch=master)](https://travis-ci.org/urre/staytube)
-
 Website for [Staytube](https://staytu.be/)
 
 Dedicated to great full length 🎥 🎹 🎷📼 concerts on YouTube.
