@@ -1,4 +1,4 @@
-@import url("../../node_modules/basscss/css/basscss.min.css");
+@import "basscss/css/basscss.min.css";
 
 @import "base.css";
 @import "type.css";

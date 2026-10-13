@@ -18,7 +18,7 @@ npm install
 
 ## Develop
 
-Note: A `.config.js` is needed with a valid YouTube V3 API Key
+Note: A `config.js` is needed with a valid YouTube V3 API Key
 
 ```
 npm start

@@ -1,16 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import Helmet from 'react-helmet'
-import createBrowserHistory from 'history/lib/createBrowserHistory'
-import ReactGA from 'react-ga'
-const apikey = require('./../../config')
-
-const history = createBrowserHistory()
-
-history.listen((location, action) => {
-  ReactGA.set({ page: location.pathname })
-  ReactGA.pageview(location.pathname)
-})
+import { Helmet } from 'react-helmet'
+const apikey = __YOUTUBE_APIKEY__
 
 class Video extends React.Component {
   constructor(props) {
@@ -18,10 +9,6 @@ class Video extends React.Component {
     this.state = {
       info: [],
     }
-  }
-  componentWillMount() {
-    ReactGA.set({ page: location.pathname })
-    ReactGA.pageview(location.pathname)
   }
   componentDidMount() {
     this.getInfo()
@@ -102,9 +89,5 @@ class Video extends React.Component {
       </div>
     )
   }
-}
-Video.propTypes = {
-  params: React.PropTypes.object,
-  children: React.PropTypes.node,
 }
 export default Video

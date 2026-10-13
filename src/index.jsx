@@ -1,16 +1,14 @@
 import React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './components/App'
-import routes from './routes'
 
 import './css/main.css'
 import './css/type.css'
 import './css/media.css'
 
-render(
+createRoot(document.getElementById('main')).render(
   <BrowserRouter>
     <App />
-  </BrowserRouter>,
-  document.getElementById('main')
+  </BrowserRouter>
 )

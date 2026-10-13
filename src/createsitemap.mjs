@@ -1,8 +1,10 @@
 import fs from 'fs'
-import axios from 'axios'
+import { createRequire } from 'module'
+
+const require = createRequire(import.meta.url)
 
 let token = ''
-const apikey = require('./../config')
+const apikey = require('./../config.js')
 
 fs.writeFile(
   '../dist/sitemap.xml',
@@ -17,15 +19,15 @@ fs.writeFile(
 
 // Loop playlist, recursively
 function saveItems(token) {
-  axios
-    .get(
-      `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=30&pageToken=${token}&playlistId=PLUIjiNV9YTmsGucmZPzRrVR1GSlmRQ6pk&key=${apikey}&alt=json`
-    )
-    .then((res) => {
-      if (res.data.nextPageToken !== 'undefined') {
-        token = res.data.nextPageToken
+  fetch(
+    `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=30&pageToken=${token}&playlistId=PLUIjiNV9YTmsGucmZPzRrVR1GSlmRQ6pk&key=${apikey}&alt=json`
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.nextPageToken !== 'undefined') {
+        token = data.nextPageToken
       }
-      saveItem(res.data.items)
+      saveItem(data.items)
     })
     .then((res) => {
       saveItems(token)

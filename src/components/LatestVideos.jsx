@@ -1,17 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import createBrowserHistory from 'history/lib/createBrowserHistory'
-import ReactGA from 'react-ga'
 import axios from 'axios'
-import Helmet from 'react-helmet'
-const apikey = require('./../../config')
-
-const history = createBrowserHistory()
-
-history.listen((location, action) => {
-  ReactGA.set({ page: location.pathname })
-  ReactGA.pageview(location.pathname)
-})
+import { Helmet } from 'react-helmet'
+const apikey = __YOUTUBE_APIKEY__
 
 class LatestVideos extends Component {
   constructor(props) {
@@ -23,10 +14,6 @@ class LatestVideos extends Component {
       nextpagetoken: '',
       prevpagetoken: '',
     }
-  }
-  componentWillMount() {
-    ReactGA.set({ page: location.pathname })
-    ReactGA.pageview(location.pathname)
   }
   componentDidMount() {
     this.fetchVideos()
@@ -139,7 +126,4 @@ class LatestVideos extends Component {
   }
 }
 
-LatestVideos.propTypes = {
-  children: React.PropTypes.node,
-}
 export default LatestVideos
