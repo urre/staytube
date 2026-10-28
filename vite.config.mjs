@@ -3,10 +3,11 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 const require = createRequire(import.meta.url)
-const apikey = require('./config.js')
+const apikey = process.env.YOUTUBE_APIKEY || require('./config.js')
 
 export default defineConfig({
   root: 'src',
+  base: process.env.BASE_PATH || '/',
   publicDir: false,
   plugins: [react()],
   define: {

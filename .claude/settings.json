@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dig +short staytu.be)",
+      "Bash(dig +short www.staytu.be)",
+      "Bash(BASE_PATH=/staytube/ npm run build)",
+      "Bash(node -e \"process.stdout.write\\(require\\('./config.js'\\)\\)\")",
+      "Bash(gh secret *)"
+    ]
+  }
+}

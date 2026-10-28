@@ -4,7 +4,8 @@ import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
 
 let token = ''
-const apikey = require('./../config.js')
+const apikey = process.env.YOUTUBE_APIKEY || require('./../config.js')
+const siteUrl = process.env.SITE_URL || 'https://urre.github.io/staytube'
 
 fs.writeFile(
   '../dist/sitemap.xml',
@@ -41,7 +42,9 @@ function saveItem(data) {
     if (video.snippet.thumbnails) {
       fs.appendFileSync(
         '../dist/sitemap.xml',
-        '\n\t<url>\n\t\t<loc>https://staytu.be/videos/' +
+        '\n\t<url>\n\t\t<loc>' +
+          siteUrl +
+          '/videos/' +
           video.snippet.resourceId.videoId +
           '</loc>\n</url>'
       )

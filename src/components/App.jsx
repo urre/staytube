@@ -7,7 +7,7 @@ import Main from './Main'
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <div>
           <div className="container">
             <Header />

@@ -1,10 +1,10 @@
 # Staytube
 
-Website for [Staytube](https://staytu.be/)
+Website for [Staytube](https://urre.github.io/staytube/)
 
 Dedicated to great full length 🎥 🎹 🎷📼 concerts on YouTube.
 
-Hosted on [Vercel](https://vercel.com)
+Hosted on GitHub Pages. Every push to `master` is built and deployed by [.github/workflows/deploy.yml](.github/workflows/deploy.yml), which reads the YouTube API key from the `YOUTUBE_APIKEY` repository secret.
 
 ## Install
 

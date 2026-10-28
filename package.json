@@ -10,12 +10,11 @@
   "scripts": {
     "start": "vite",
     "build": "vite build && npm run build:assets && npm run sitemap",
-    "build:assets": "cd src && cp -R images ../dist/",
+    "build:assets": "cd src && cp -R images ../dist/ && cp ../dist/index.html ../dist/404.html",
     "format:js": "npx prettier --write './src/**/*.{js,jsx,mjs}'",
     "format:css": "npx stylelint './src/**/*.css' --fix",
     "format": "npm run format:js && npm run format:css",
-    "sitemap": "cd src && node createsitemap.mjs",
-    "deploy": "vercel --prod"
+    "sitemap": "cd src && node createsitemap.mjs"
   },
   "dependencies": {
     "axios": "^1.0.0",
