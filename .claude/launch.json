@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "staytube-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["start", "--", "--port", "8080", "--strictPort"],
+      "port": 8080,
+      "autoPort": false
+    },
+    {
+      "name": "staytube-preview",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "npm run build && npm run preview -- --port 4173 --strictPort"],
+      "port": 4173,
+      "autoPort": false
+    }
+  ]
+}

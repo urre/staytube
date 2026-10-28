@@ -1,0 +1,46 @@
+.grid {
+	margin: 0 -1rem;
+}
+
+.item {
+	padding: 1rem;
+}
+
+@media (min-width: 40em) {
+	.grid {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.item {
+		width: 50%;
+	}
+}
+
+@media (min-width: 64em) {
+	.item {
+		width: 33.3333%;
+	}
+}
+
+.link {
+	display: block;
+}
+
+.thumbnail {
+	object-fit: cover;
+	object-position: 50%;
+	height: 200px;
+	width: 100%;
+}
+
+.pager {
+	width: 100%;
+	padding: 1rem;
+	text-align: center;
+}
+
+.pager ul {
+	display: flex;
+	justify-content: space-between;
+}

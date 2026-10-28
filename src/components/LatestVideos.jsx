@@ -1,129 +1,83 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { Helmet } from 'react-helmet'
-const apikey = __YOUTUBE_APIKEY__
+import { useCallback, useEffect, useState } from 'react'
+import { Link } from 'react-router'
+import { getPlaylistPage } from '../youtube'
+import Meta from './Meta'
+import Spinner from './Spinner'
+import button from './Button.module.css'
+import styles from './LatestVideos.module.css'
 
-class LatestVideos extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loading: false,
-      error: false,
-      videos: [],
-      nextpagetoken: '',
-      prevpagetoken: '',
-    }
-  }
-  componentDidMount() {
-    this.fetchVideos()
-  }
-  fetchVideos = (direction) => {
-    this.setState({
-      loading: true,
-    })
-    const token =
-      direction == 'next' ? this.state.nextpagetoken : this.state.prevpagetoken
+const hidden = ['Deleted video', 'Private video']
 
-    const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=30&pageToken=${token}&playlistId=PLUIjiNV9YTmsGucmZPzRrVR1GSlmRQ6pk&key=${apikey}&alt=json`
+const LatestVideos = () => {
+  const [loading, setLoading] = useState(true)
+  const [page, setPage] = useState({ items: [] })
 
-    axios.get(url).then((res) => {
-      this.setState({
-        videos: res.data.items,
-        loading: false,
-        nextpagetoken: res.data.nextPageToken ? res.data.nextPageToken : '',
-        prevpagetoken: res.data.prevPageToken ? res.data.prevPageToken : '',
-      })
-    })
-  }
-  nextPage = (event) => {
-    event.preventDefault()
-    this.fetchVideos('next', this.state.nextpagetoken)
-  }
-  prevPage = (event) => {
-    event.preventDefault()
-    this.fetchVideos('prev', this.state.prevpagetoken)
-  }
-  renderVideos = () => {
-    return this.state.videos.map((video, index) => {
-      const videoClip = video.snippet.resourceId.videoId
-      let image = 'https://placehold.it/480x360'
-      const alt = video.snippet.title
-      if (alt !== 'Deleted video' && alt !== 'Private video') {
-        return (
-          <div key={index} className="sm-col sm-col-6 lg-col-4 p2">
-            <Link to={`/videos/${videoClip}`} className="block">
-              <div className="img-wrapper">
+  const load = useCallback((token) => {
+    setLoading(true)
+    getPlaylistPage(token)
+      .then(setPage)
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false))
+  }, [])
+
+  useEffect(() => load(''), [load])
+
+  const videos = page.items.filter(
+    (video) => !hidden.includes(video.snippet.title)
+  )
+
+  return (
+    <div className={styles.grid}>
+      <Meta
+        title="Latest videos | Staytube"
+        ogTitle="Latest videos"
+        description="Latest videos from Staytube"
+      />
+
+      {loading ? (
+        <Spinner />
+      ) : (
+        videos.map(({ snippet }) => {
+          const id = snippet.resourceId.videoId
+          return (
+            <div key={id} className={styles.item}>
+              <Link to={`/videos/${id}`} className={styles.link}>
                 <img
-                  src={`https://res.cloudinary.com/urre/image/youtube/w_480,h_360,c_fill,q_40/${videoClip}.jpg`}
-                  role="presentation"
-                  alt={alt}
+                  className={styles.thumbnail}
+                  src={`https://res.cloudinary.com/urre/image/youtube/w_480,h_360,c_fill,q_40/${id}.jpg`}
+                  alt={snippet.title}
                 />
-              </div>
-              <p>{alt}</p>
-            </Link>
-          </div>
-        )
-      }
-    })
-  }
-  render() {
-    return (
-      <div className="sm-flex flex-wrap mxn2">
-        <Helmet
-          title={'Latest videos | Staytube'}
-          meta={[
-            { name: 'description', content: 'Latest videos from Staytube' },
-            { property: 'og:title', content: 'Latest videos' },
-            {
-              property: 'og:description',
-              content: 'Latest videos from Staytube',
-            },
-            {
-              property: 'og:image',
-              content:
-                'https://res.cloudinary.com/urre/image/upload/v1495467361/epvi1qppu4y7llo0hmmw.png',
-            },
-          ]}
-        />
-
-        {this.state.loading ? (
-          <div className="spinner-wrapper">
-            <div className="spinner">
-              <div className="bounce1" />
-              <div className="bounce2" />
-              <div className="bounce3" />
+                <p>{snippet.title}</p>
+              </Link>
             </div>
-          </div>
-        ) : (
-          this.renderVideos()
-        )}
-        {this.props.children}
-        <div className="sm-col-12 p2 center">
-          <nav role="navigation">
-            <ul className="list-reset flex justify-between">
-              <li>
-                <a
-                  className="btn btn-outline btn-medium"
-                  onClick={this.prevPage}
-                >
-                  Previous
-                </a>
-              </li>
-              <li>
-                <a
-                  className="btn btn-outline btn-medium"
-                  onClick={this.nextPage}
-                >
-                  Next
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    )
-  }
+          )
+        })
+      )}
+
+      <nav className={styles.pager}>
+        <ul>
+          <li>
+            <button
+              type="button"
+              className={button.button}
+              onClick={() => load(page.prevPageToken ?? '')}
+            >
+              Previous
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              className={button.button}
+              onClick={() => load(page.nextPageToken ?? '')}
+            >
+              Next
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  )
 }
 
 export default LatestVideos

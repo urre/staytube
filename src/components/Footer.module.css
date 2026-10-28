@@ -1,0 +1,27 @@
+.footer {
+	padding-top: 4rem;
+}
+
+.container {
+	composes: container from "./App.module.css";
+}
+
+.column {
+	padding: 1rem;
+}
+
+@media (min-width: 40em) {
+	.column {
+		width: 50%;
+		margin: 0 auto;
+	}
+}
+
+.links {
+	display: flex;
+	justify-content: center;
+}
+
+.links li {
+	margin-right: 2rem;
+}

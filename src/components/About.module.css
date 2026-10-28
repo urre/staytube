@@ -1,0 +1,18 @@
+.row {
+	margin: 0 -1rem;
+}
+
+.column {
+	padding: 1rem;
+}
+
+@media (min-width: 40em) {
+	.column {
+		width: 50%;
+		margin: 0 auto;
+	}
+}
+
+.icon {
+	margin-right: 1rem;
+}

@@ -3,59 +3,41 @@ import { createRequire } from 'module'
 
 const require = createRequire(import.meta.url)
 
-let token = ''
 const apikey = process.env.YOUTUBE_APIKEY || require('./../config.js')
 const siteUrl = process.env.SITE_URL || 'https://urre.github.io/staytube'
+const playlistId = 'PLUIjiNV9YTmsGucmZPzRrVR1GSlmRQ6pk'
 
-fs.writeFile(
+// Walk every page of the playlist and collect the video ids
+async function getVideoIds() {
+  const ids = []
+  let pageToken = ''
+  do {
+    const query = new URLSearchParams({
+      part: 'snippet',
+      maxResults: 50,
+      playlistId,
+      pageToken,
+      key: apikey,
+    })
+    const res = await fetch(
+      `https://www.googleapis.com/youtube/v3/playlistItems?${query}`
+    )
+    if (!res.ok) throw new Error(`YouTube API ${res.status}`)
+    const data = await res.json()
+    for (const video of data.items) {
+      if (video.snippet.thumbnails) ids.push(video.snippet.resourceId.videoId)
+    }
+    pageToken = data.nextPageToken
+  } while (pageToken)
+  return ids
+}
+
+const urls = (await getVideoIds())
+  .map((id) => `\t<url>\n\t\t<loc>${siteUrl}/videos/${id}</loc>\n\t</url>`)
+  .join('\n')
+
+fs.writeFileSync(
   '../dist/sitemap.xml',
-  "<?xml version='1.0' encoding='UTF-8'?>\n<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>",
-  function (err) {
-    if (err) {
-      return console.log(err)
-    }
-    console.log('Saved sitemap.xml')
-  }
+  `<?xml version='1.0' encoding='UTF-8'?>\n<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n${urls}\n</urlset>\n`
 )
-
-// Loop playlist, recursively
-function saveItems(token) {
-  fetch(
-    `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=30&pageToken=${token}&playlistId=PLUIjiNV9YTmsGucmZPzRrVR1GSlmRQ6pk&key=${apikey}&alt=json`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.nextPageToken !== 'undefined') {
-        token = data.nextPageToken
-      }
-      saveItem(data.items)
-    })
-    .then((res) => {
-      saveItems(token)
-    })
-    .catch((error) => {})
-}
-
-// Save items as <loc> element in the sitemap
-function saveItem(data) {
-  return data.map((video, index) => {
-    if (video.snippet.thumbnails) {
-      fs.appendFileSync(
-        '../dist/sitemap.xml',
-        '\n\t<url>\n\t\t<loc>' +
-          siteUrl +
-          '/videos/' +
-          video.snippet.resourceId.videoId +
-          '</loc>\n</url>'
-      )
-    }
-  })
-}
-
-// Save items
-saveItems(token)
-
-// Note to self: Sloppy, dumb and just silly
-setTimeout(function () {
-  fs.appendFileSync('../dist/sitemap.xml', '\n</urlset>')
-}, 3000)
+console.log('Saved sitemap.xml')

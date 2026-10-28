@@ -1,93 +1,55 @@
-import React from 'react'
-import axios from 'axios'
-import { Helmet } from 'react-helmet'
-const apikey = __YOUTUBE_APIKEY__
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
+import { getVideo } from '../youtube'
+import Meta from './Meta'
+import Spinner from './Spinner'
+import styles from './Video.module.css'
 
-class Video extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      info: [],
+const formatViews = (count) => count.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+
+const Video = () => {
+  const { video: id } = useParams()
+  const [video, setVideo] = useState(null)
+
+  useEffect(() => {
+    let current = true
+    setVideo(null)
+    getVideo(id)
+      .then((item) => current && setVideo(item))
+      .catch((error) => console.error(error))
+    return () => {
+      current = false
     }
+  }, [id])
+
+  if (!video) {
+    return <Spinner />
   }
-  componentDidMount() {
-    this.getInfo()
-  }
-  getInfo() {
-    this.setState({
-      loading: true,
-    })
-    axios
-      .get(
-        `https://www.googleapis.com/youtube/v3/videos?id=${this.props.match.params.video}&key=${apikey}&fields=*&part=snippet,contentDetails,statistics,status`
-      )
-      .then((res) => {
-        this.setState({
-          title: res.data.items[0].snippet.title,
-          description: res.data.items[0].snippet.description.replace(
-            /\n|\r/g,
-            ''
-          ),
-          definition: res.data.items[0].contentDetails.definition,
-          duration: res.data.items[0].contentDetails.duration,
-          image: res.data.items[0].snippet.thumbnails.high.url,
-          stats: res.data.items[0].statistics.viewCount,
-          loading: false,
-        })
-      })
-  }
-  formatViews(amount) {
-    return `${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}`
-  }
-  formatDefiniion(kind) {
-    return kind.toUpperCase()
-  }
-  renderVideo() {
-    return (
-      <div>
-        <div className="video">
-          <noscript>
-            <img src={this.state.image} alt={this.state.title} />
-          </noscript>
-          <iframe
-            src={`https://www.youtube.com/embed/${this.props.match.params.video}?rel=03&ampautohide=1&ampshowinfo=0`}
-            frameBorder="0"
-            allowFullScreen
-          />
-        </div>
-        <h1>{this.state.title}</h1>
-        <ul className="list-reset">
-          <li>{this.formatViews(`${this.state.stats}`)} YouTube views</li>
-          <li>{this.formatDefiniion(`${this.state.definition}`)}</li>
-        </ul>
+
+  const { snippet, contentDetails, statistics } = video
+
+  return (
+    <div className={styles.page}>
+      <Meta
+        title={snippet.title}
+        description={snippet.description.replace(/\n|\r/g, '')}
+        image={snippet.thumbnails.high.url}
+      />
+      <div className={styles.video}>
+        <iframe
+          src={`https://www.youtube.com/embed/${id}?rel=0`}
+          title={snippet.title}
+          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          allowFullScreen
+        />
       </div>
-    )
-  }
-  render() {
-    return (
-      <div className="sm-flex flex-wrap center">
-        <div className="sm-col-12 p2">
-          <Helmet
-            title={`${this.state.title}`}
-            meta={[
-              { name: 'description', content: `${this.state.description}` },
-              { property: 'og:title', content: `${this.state.title}` },
-              {
-                property: 'og:description',
-                content: `${this.state.description}`,
-              },
-              { property: 'og:image', content: `${this.state.image}` },
-            ]}
-          />
-          {this.state.loading ? (
-            <div className="sk-rotating-plane" />
-          ) : (
-            this.renderVideo()
-          )}
-          {this.props.children}
-        </div>
-      </div>
-    )
-  }
+      <h1>{snippet.title}</h1>
+      <ul>
+        <li>{formatViews(statistics.viewCount)} YouTube views</li>
+        <li>{contentDetails.definition.toUpperCase()}</li>
+      </ul>
+    </div>
+  )
 }
+
 export default Video

@@ -8,6 +8,8 @@ Hosted on GitHub Pages. Every push to `master` is built and deployed by [.github
 
 ## Install
 
+Requires Node 22.22 or later.
+
 ```
 git clone https://github.com/urre/staytube.git
 cd staytube
